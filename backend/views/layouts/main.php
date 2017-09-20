@@ -6,7 +6,7 @@ use yii\helpers\Html;
 <!DOCTYPE html>
 <html>
 <head>
-    <title>M.Z SHOP - 后台管理</title>
+    <title>爱宠 志愿者平台</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
@@ -49,7 +49,7 @@ use yii\helpers\Html;
                 <span class="icon-bar"></span>
             </button>
             
-            <a class="brand" href="index.html" style="font-weight:700;font-family:Microsoft Yahei">M.Z SHOP - 后台管理</a>
+            <a class="brand" href="index.html" style="font-weight:700;font-family:Microsoft Yahei">爱宠 志愿者平台 - 管理</a>
 
             <ul class="nav pull-right">                
                 <li class="hidden-phone">
@@ -153,12 +153,7 @@ use yii\helpers\Html;
                 </li>
                 <li class="settings hidden-phone">
 
-                <?= Html::beginForm(['/site/logout'], 'post');?>
-            <?= Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            );?>
-            <?= Html::endForm();?>
+               
                     
                 </li>
             </ul>            
@@ -175,17 +170,22 @@ use yii\helpers\Html;
                     <div class="arrow_border"></div>
                 </div>
                 <a href="<?= Url::to(['admin/index'])?>">
-                    <i class="icon-home"></i>
-                    <span>后台首页</span>
+                    <i class="icon-th-large"></i>
+                    <span>IC 首页</span>
                 </a>
             </li>            
             <li>
-                <a href="chart-showcase.html">
+                <a class="dropdown-toggle" href="#">
                     <i class="icon-signal"></i>
-                    <span>统计</span>
+                    <span>CI天地</span>
+                    <i class="icon-chevron-down"></i>
                 </a>
+                <ul class="submenu">
+                    <li><a href="user-list.html">latest info(最新消息)</a></li>
+                    <li><a href="new-user.html">new friends(新朋友)</a></li>
+                </ul>
             </li>
-            <li>
+          <!--   <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-group"></i>
                     <span>用户管理</span>
@@ -196,45 +196,43 @@ use yii\helpers\Html;
                     <li><a href="new-user.html">加入新用户</a></li>
                     <li><a href="user-profile.html">用户信息</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-edit"></i>
-                    <span>商品管理</span>
+                    <span>Pokemon(精灵小世界)</span>
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="<?= Url::to(['goods/list'])?>">商品管理</a></li>
-                    <li><a href="<?= Url::to(['brand/list'])?>">品牌管理</a></li>
-                    <li><a href="<?= Url::to(['category/list'])?>">分类管理</a></li>
-                    <li><a href="<?= Url::to(['goods-type/list'])?>">类型管理</a></li>
+                    <li><a href="<?= Url::to(['goods/list'])?>">All elves(所有精灵)</a></li>
+                    <li><a href="<?= Url::to(['category/list'])?>">The elves CAT(精灵品种)</a></li>
                 </ul>
             </li>
             <li>
-                <a href="gallery.html">
+                <a href="javascript:;">
                     <i class="icon-picture"></i>
-                    <span>相册管理</span>
-                </a>
-            </li>
-            <li>
-                <a href="calendar.html">
-                    <i class="icon-calendar-empty"></i>
-                    <span>日历事件管理</span>
-                </a>
-            </li>
-            <li>
-                <a href="tables.html">
-                    <i class="icon-th-large"></i>
-                    <span>表格</span>
+                    <span>PhotoAlbum(相册)</span>
                 </a>
             </li>
             
             <li>
-                <a href="personal-info.html">
-                    <i class="icon-cog"></i>
-                    <span>我的信息</span>
+                <a class="dropdown-toggle" href="#">
+                    <!-- <i class="icon-cog"></i> -->
+                    <i class="icon-home"></i>
+                    <span>Residence</span>
+                    <i class="icon-chevron-down"></i>
                 </a>
+                <ul class="submenu">
+                    <li><a href="<?= Url::to(['admin/info'])?>">Personal information(个人信息管理)</a></li>
+                    <li><a href="<?= Url::to(['brand/list'])?>">Dribs and drabs(我的点点滴滴)</a></li>
+                </ul>
             </li>
+                <?= Html::beginForm(['/site/logout'], 'post');?>
+                <?= Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                );?>
+                <?= Html::endForm();?>
             
         </ul>
     </div>
