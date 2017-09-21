@@ -12,6 +12,8 @@ use yii\filters\AccessControl;
 use common\models\UploadForm;
 use yii\web\UploadedFile;
 use common\helpers\Tools;
+use common\models\Count;
+
 
 /**
  * Admin controller
@@ -22,31 +24,35 @@ class AdminController extends Controller
 	 * ACF 认证
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => [],
-                        'allow'   => true,
-                        'roles'   => ['?'],
-                    ],
-                    [
-                        'actions' => [],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
+    // public function behaviors()
+    // {
+    //     return [
+    //         'access' => [
+    //             'class' => AccessControl::className(),
+    //             'rules' => [
+    //                 [
+    //                     'actions' => [],
+    //                     'allow'   => true,
+    //                     'roles'   => ['?'],
+    //                 ],
+    //                 [
+    //                     'actions' => [],
+    //                     'allow' => true,
+    //                     'roles' => ['@'],
+    //                 ],
+    //             ],
+    //         ],
+    //     ];
+    // }
 
 	// 后台默认页面
 	public function actionIndex()
 	{
-		return $this->render('index');
+        $levelTop = (new \yii\db\Query())->select('level,username')->from('pet_count as c')->leftJoin('pet_admin as a', 'c.user_id=a.id')->orderBy('level desc')->limit('10')->all(); //等级排行前十
+
+        $activiTop = (new \yii\db\Query())->select('activity_count,username')->from('pet_count as c')->leftJoin('pet_admin as a', 'c.user_id=a.id')->orderBy('level desc')->limit('10')->all(); //活跃排行前十
+
+		return $this->render('index', ['levelTop' => $levelTop, 'activiTop' => $activiTop]);
 	}
 
     /**

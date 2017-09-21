@@ -7,7 +7,7 @@ $params = array_merge(
 );
 
 return [
-    'defaultRoute' => 'site/login', //默认访问页面(登录页面)
+    'defaultRoute' => 'admin/index', //默认访问页面(登录页面)
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

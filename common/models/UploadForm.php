@@ -28,7 +28,7 @@ class UploadForm extends Model
     	if($this->validate())
     	{
     	    $path = $this->uploadFilePath(); //文件上传路径
-    		$fileName = $path .uniqid() .rand(1000,9999) .$this->imgFile->baseName .'.' .$this->imgFile->extension;
+    		$fileName = $path .uniqid() .rand(1000,9999) .'.' .$this->imgFile->extension;
     		$this->imgFile->saveAs($fileName);
             return $fileName;
     	}

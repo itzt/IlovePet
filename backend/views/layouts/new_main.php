@@ -204,8 +204,8 @@ use yii\helpers\Html;
                     <i class="icon-chevron-down"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="<?= Url::to(['dog/index'])?>">All elves(所有精灵)</a></li>
-                    <li><a href="<?= Url::to(['style/index'])?>">The elves CAT(精灵品种)</a></li>
+                    <li><a href="<?= Url::to(['goods/list'])?>">All elves(所有精灵)</a></li>
+                    <li><a href="<?= Url::to(['category/list'])?>">The elves CAT(精灵品种)</a></li>
                 </ul>
             </li>
             <li>
@@ -224,10 +224,15 @@ use yii\helpers\Html;
                 </a>
                 <ul class="submenu">
                     <li><a href="<?= Url::to(['admin/info'])?>">Personal information(个人信息管理)</a></li>
-                    <li><a href="<?= Url::to(['record/index'])?>">Dribs and drabs(我的点点滴滴)</a></li>
+                    <li><a href="<?= Url::to(['brand/list'])?>">Dribs and drabs(我的点点滴滴)</a></li>
                 </ul>
             </li>
-
+                <?= Html::beginForm(['/site/logout'], 'post');?>
+                <?= Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                );?>
+                <?= Html::endForm();?>
             
         </ul>
     </div>
